@@ -23,4 +23,6 @@ int main(int argc, char **argv)
 		assert(c[1] == 8);
 		assert(c[2] == 18);
 	}
+
+	return 0;
 }

@@ -1,7 +1,7 @@
 SHELL=/bin/bash
 
 CXX := g++
-CXXFLAGS := -std=c++20 -Wpedantic
+CXXFLAGS := -std=c++20 -Wpedantic -g
 
 BUILD_FOLDER := ./build
 

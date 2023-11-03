@@ -1,0 +1,9 @@
+{
+	"makefile.launchConfigurations": [
+		{
+			"cwd": "/home/cmcderm/repos/fintechPrep/multithread/build",
+			"binaryPath": "/home/cmcderm/repos/fintechPrep/multithread/build/multi",
+			"binaryArgs": []
+		}
+	]
+}

@@ -42,6 +42,8 @@ int main(int argc, char **argv)
 	{
 		std::string n_input = argv[1];
 
+		printf("input %d\n", n_input);
+
 		int input_num;
 		if (argc >= 3)
 		{

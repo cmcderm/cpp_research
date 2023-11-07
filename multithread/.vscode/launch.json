@@ -4,27 +4,44 @@
 	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 	"version": "0.2.0",
 	"configurations": [
-	
+		{
+			"name": "(gdb) Launch",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/build/multi",
+			"args": ["10", "2"],
+			"stopAtEntry": false,
+			"cwd": "${workspaceFolder}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "gdb",
+			"setupCommands": [
+				{
+					"description": "Enable pretty-printing for gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				},
+				{
+					"description":  "Set Disassembly Flavor to Intel",
+					"text": "-gdb-set disassembly-flavor intel",
+					"ignoreFailures": true
+				},
+				{
+					"description": "Make",
+					"text": "make",
+					"ignoreFailures": false
+				}
+			]
+		},
 		{
 			"name": "C++ Make",
+			"type":	"cppdbg",
 			"request": "launch",
 			"setupCommands": [{
 				"description": "Build",
 				"ignoreFailures": false,
 				"text": "make"
 			}],
-			"customLaunchSetupCommands": [
-				{
-					"description": "Build",
-					"ignoreFailures": false,
-					"text": "make"
-				},
-				{
-					"description": "Run",
-					"ignoreFailures": false,
-					"text": "${workspaceRoot}/multithread"
-				}
-			],
 			"program": "${workspaceRoot}/build/multi",
 			"logging": {
 				"moduleLoad": false,

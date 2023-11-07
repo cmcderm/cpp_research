@@ -58,7 +58,7 @@ void ThreadedMath<T>::thread(std::function<void(int &)> operation)
 
 		printf("Starting task range: %d - %d\n", start_i, end_i);
 		std::thread task(
-				[this, &operation](vec_iter start, vec_iter end)
+				[this, operation](vec_iter start, vec_iter end)
 				{
 					for (vec_iter m = start; m < end; ++m)
 					{

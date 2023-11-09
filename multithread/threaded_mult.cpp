@@ -36,10 +36,21 @@ const std::vector<T> *ThreadedMath<T>::get_data()
 	return this->data;
 }
 
+void thread_task(
+		std::function<void(int &)> operation,
+		vec_iter start, vec_iter end)
+{
+	std::cout << "thread_task start" << std::endl;
+	for (vec_iter m = start; m < end; ++m)
+	{
+		operation(*m);
+	}
+}
+
 template <typename T>
 void ThreadedMath<T>::thread(std::function<void(int &)> operation)
 {
-	std::vector<std::thread> threads;
+	std::vector<std::thread *> threads;
 
 	int step_size = this->data->size() / num_threads;
 
@@ -57,20 +68,14 @@ void ThreadedMath<T>::thread(std::function<void(int &)> operation)
 		}
 
 		printf("Starting task range: %d - %d\n", start_i, end_i);
-		std::thread task(
-				[this, operation](vec_iter start, vec_iter end)
-				{
-					for (vec_iter m = start; m < end; ++m)
-					{
-						operation(*m);
-					}
-				},
-				start, end);
+		std::thread *task = new std::thread(thread_task, operation, start, end);
+
+		threads.push_back(task);
 	}
 
 	for (std::size_t i = 0; i < threads.size(); ++i)
 	{
-		threads[i].join();
+		threads[i]->join();
 	}
 }
 
